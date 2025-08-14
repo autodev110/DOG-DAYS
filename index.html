@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 100px; /* Space for fixed footer */
+            color: #000;
+            background-color: #fff;
+        }
+
+        /* Section for the hero video background and overlay logo */
+        #hero-section {
+            position: relative; /* Establishes a positioning context for the logo */
+            width: 100%;
+            height: 65vh; /* Video background will take 65% of the viewport height. Adjust as needed (e.g., 100vh for full height). */
+            overflow: hidden; /* Ensures nothing spills out */
+            background-color: #333; /* Fallback color if video fails to load or is slow */
+        }
+
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures video covers the container, cropping if necessary, maintaining aspect ratio */
+            position: absolute; /* Positioned within hero-section */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Behind the logo */
+        }
+
+        #hero-logo {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* This combination perfectly centers the element */
+            z-index: 2; /* In front of the video */
+            width: 750px; /* Adjust this value to make the logo larger or smaller */
+            max-width: 80%; /* Ensures the logo isn't wider than 80% of the screen on small devices */
+            height: auto; /* Maintain aspect ratio of the logo */
+            display: block; /* Good practice for images you position this way */
+        }
+
+        /* Header bar for navigation, appears below the hero section */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative; /* Ensures it stacks normally in the document flow */
+            z-index: 3; /* Keeps it above other elements if there were any overlap issues */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0; /* Reset default margin */
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0; /* Remove margin from the last navigation item */
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em; /* Slightly increased font size for navigation */
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 3; /* Keep footer above other scrollable content */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hero-section">
+        <video autoplay loop muted playsinline id="hero-video"> {/* `playsinline` helps with mobile browser behavior */}
+            <source src="Cloud9Vid.mp4" type="video/mp4">
+        </video>
+        <img src="DOG-DAYS_V2.png" alt="dog days logo" id="hero-logo">
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div style="height: 500px; background-color: white; margin-top:20px; padding:20px; border-radius: 8px;">
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DOG DAYS. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

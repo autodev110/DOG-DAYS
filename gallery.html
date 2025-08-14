@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery – Loma Park</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 100px;
+            color: #000;
+            background-color: #fff;
+        }
+
+        /* Section for the hero video background and overlay logo */
+        #hero-section {
+            position: relative; /* Establishes a positioning context for the logo */
+            width: 100%;
+            height: 65vh; /* Video background will take 65% of the viewport height. Adjust as needed (e.g., 100vh for full height). */
+            overflow: hidden; /* Ensures nothing spills out */
+            background-color: #333; /* Fallback color if video fails to load or is slow */
+        }
+
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures video covers the container, cropping if necessary, maintaining aspect ratio */
+            position: absolute; /* Positioned within hero-section */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Behind the logo */
+        }
+
+        #hero-logo {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* This combination perfectly centers the element */
+            z-index: 2; /* In front of the video */
+            width: 750px; /* Adjust this value to make the logo larger or smaller */
+            max-width: 80%; /* Ensures the logo isn't wider than 80% of the screen on small devices */
+            height: auto; /* Maintain aspect ratio of the logo */
+            display: block; /* Good practice for images you position this way */
+        }
+
+        /* Header bar for navigation, appears below the hero section */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative; /* Ensures it stacks normally in the document flow */
+            z-index: 3; /* Keeps it above other elements if there were any overlap issues */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0; /* Reset default margin */
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0; /* Remove margin from the last navigation item */
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em; /* Slightly increased font size for navigation */
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+            padding: 20px;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .popup-content img {
+            display: block;
+            max-height: 80vh;
+            width: auto;
+            margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #000;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="hero-section">
+        <video autoplay loop muted playsinline id="hero-video">
+            <source src="Cloud9Vid.mp4" type="video/mp4">
+        </video>
+        <img src="DOG-DAYS_V2.png" alt="Gallery Logo" id="hero-logo">
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        
+        <div class="gallery">
+            <div class="gallery-item"><img src="never.png" alt="Image 1"><h3></h3></div>
+            <div class="gallery-item"><img src="never.png" alt="Image 2"><h3></h3></div>
+            <div class="gallery-item"><img src="never.png" alt="Image 3"><h3></h3></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DOG DAYS. All rights reserved.</p>
+    </footer>
+
+    <div class="popup" id="popup">
+        <div class="popup-content" id="popup-content">
+            <span class="close-btn" id="close-btn">&times;</span>
+            <img src="" alt="Zoomed" id="zoomed-image">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('.gallery-item img');
+            const popup = document.getElementById('popup');
+            const zoomedImage = document.getElementById('zoomed-image');
+            const closeBtn = document.getElementById('close-btn');
+            const popupContent = document.getElementById('popup-content');
+
+            images.forEach(img => {
+                img.addEventListener('click', (e) => {
+                    zoomedImage.src = e.target.src;
+                    popup.style.display = 'flex';
+                });
+            });
+
+            // Close on X click
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                popup.style.display = 'none';
+            });
+
+            // Close when clicking outside content
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.style.display = 'none';
+                }
+            });
+
+            // Prevent closing when clicking inside content
+            popupContent.addEventListener('click', (e) => e.stopPropagation());
+        });
+    </script>
+</body>
+</html>
