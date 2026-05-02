@@ -1,0 +1,127 @@
+body.dd-editor-active {
+    padding-bottom: 92px;
+}
+
+.dd-editor-toolbar {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.24);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.dd-editor-toolbar strong,
+.dd-editor-toolbar button {
+    font-family: "Arial Black", Impact, "Franklin Gothic Heavy", sans-serif;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+}
+
+.dd-editor-toolbar strong {
+    border: 2px solid #000;
+    padding: 8px 10px;
+    background: #88c9f2;
+}
+
+.dd-editor-toolbar span {
+    margin-right: auto;
+    font-size: 0.88rem;
+}
+
+.dd-editor-toolbar button {
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+
+.dd-editor-toolbar button:hover,
+.dd-editor-toolbar button:focus-visible {
+    background: #000;
+    color: #fff;
+}
+
+[data-dd-edit] {
+    position: relative;
+}
+
+body.dd-editor-active [data-dd-edit] {
+    outline: 1px dashed rgba(237, 28, 36, 0.65);
+    outline-offset: 4px;
+    cursor: text;
+}
+
+body.dd-editor-active [data-dd-edit]:focus {
+    outline: 3px solid #ed1c24;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+body.dd-editor-active [data-dd-edit].dd-editor-dirty {
+    box-shadow: inset 0 -0.34em 0 rgba(136, 201, 242, 0.48);
+}
+
+.dd-editor-copybox {
+    position: fixed;
+    inset: 20px;
+    z-index: 2100;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 12px;
+    border: 2px solid #000;
+    background: #fff;
+    padding: 16px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.26);
+}
+
+.dd-editor-copybox[hidden] {
+    display: none;
+}
+
+.dd-editor-copybox textarea {
+    width: 100%;
+    min-height: 0;
+    resize: none;
+    border: 2px solid #000;
+    padding: 10px;
+    font: 0.84rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.dd-editor-copybox button {
+    justify-self: start;
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+    padding: 10px 12px;
+    font-family: "Arial Black", Impact, "Franklin Gothic Heavy", sans-serif;
+    text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+    body.dd-editor-active {
+        padding-bottom: 190px;
+    }
+
+    .dd-editor-toolbar {
+        align-items: stretch;
+    }
+
+    .dd-editor-toolbar span {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .dd-editor-toolbar button {
+        flex: 1 1 140px;
+    }
+}

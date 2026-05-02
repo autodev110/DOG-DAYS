@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOG DAYS</title>
+    <meta name="description" content="DOG DAYS issues garments, printed matter, and official objects for weather that has already happened.">
+    <meta property="og:title" content="DOG DAYS">
+    <meta property="og:description" content="A store-shaped brand operating under uncertain weather.">
+    <meta property="og:image" content="https://autodev110.github.io/DOG-DAYS/DOG-DAYS_V2.png">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editor.css">
+    <script src="site.js" defer></script>
+    <script src="editor.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <div id="hero-section">
         <video autoplay loop muted playsinline id="hero-video">
             <source src="Cloud9Vid.mp4" type="video/mp4">
@@ -19,23 +26,75 @@
     </div>
 
     <header>
-        <nav>
+        <nav aria-label="Primary navigation">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="index.html" aria-current="page">HOME</a></li>
+                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="gallery.html">GALLERY</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <div style="height: 500px; background-color: white; margin-top:20px; padding:20px; border-radius: 8px;">
+    <main id="main-content" class="site-main home-page">
+        <section class="home-statement" aria-labelledby="home-title">
+            <p class="eyebrow">CURRENT STATUS</p>
+            <h1 id="home-title">DOG DAYS is open in the areas that remain open.</h1>
+            <p>
+                Garments, printed matter, and small official objects are issued for warm weather,
+                closed rooms, and customers who return to the page.
+            </p>
+        </section>
 
+        <section class="brand-board" aria-label="DOG DAYS operating board">
+            <div class="brand-board__panel brand-board__panel--title">
+                <p class="eyebrow">OPERATING BOARD</p>
+                <h2>Offical goods for those days</h2>
+                <p>Issued in small quantities. Filed in broad daylight. Held under weather without a promised ending.</p>
+            </div>
+            <div class="brand-board__seal" aria-hidden="true">
+                <span>DOG</span>
+                <strong>DAYS</strong>
+                <span>OPEN / CLOSED</span>
+            </div>
+            <div class="brand-board__window">
+                <div class="weather-window" aria-hidden="true">
+                    <span></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-grid" aria-label="DOG DAYS notices">
+            <article class="notice-block">
+                <p class="notice-label">DROP</p>
+                <h2>Observed Goods</h2>
+                <p>New inventory has been counted once. Further counting may change the result.</p>
+                <a class="text-link" href="shop.html">Enter shop</a>
+            </article>
+
+            <article class="notice-block">
+                <p class="notice-label">ARCHIVE</p>
+                <h2>Exhibition</h2>
+                <p>A small gallery of posted work held in public view until the room changes its mind.</p>
+                <a class="text-link" href="gallery.html">View gallery</a>
+            </article>
+
+            <article class="notice-block notice-block--quiet">
+                <p class="notice-label">SYSTEM</p>
+                <h2>No public explanation is scheduled.</h2>
+                <p>All available information is already facing forward.</p>
+            </article>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 DOG DAYS. All rights reserved.</p>
+        <ul class="footer-links" aria-label="Site policies">
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="record.html">Record</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="cancellation.html">Cancellation</a></li>
+        </ul>
     </footer>
-
 </body>
 </html>

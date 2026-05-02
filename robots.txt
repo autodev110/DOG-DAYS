@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://autodev110.github.io/DOG-DAYS/sitemap.xml

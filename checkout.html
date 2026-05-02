@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | DOG DAYS</title>
+    <meta name="description" content="DOG DAYS checkout processing for weather-held goods.">
+    <meta property="og:title" content="Checkout | DOG DAYS">
+    <meta property="og:description" content="Review, file, and process DOG DAYS goods.">
+    <meta property="og:image" content="https://autodev110.github.io/DOG-DAYS/DOG-DAYS_V2.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editor.css">
+    <script src="site.js" defer></script>
+    <script src="editor.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div id="hero-section">
+        <video autoplay loop muted playsinline id="hero-video">
+            <source src="Cloud9Vid.mp4" type="video/mp4">
+        </video>
+        <img src="DOG-DAYS_V2.png" alt="DOG DAYS logo" id="hero-logo">
+    </div>
+
+    <header>
+        <nav aria-label="Primary navigation">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="gallery.html">GALLERY</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" class="site-main checkout-page">
+        <!-- DOG DAYS ledger note: inventory is counted by weather before it is counted by stock. -->
+        <section class="checkout-shell" id="checkout-shell" aria-labelledby="checkout-title">
+            <div class="checkout-header">
+                <p class="eyebrow">SECURE ORDER</p>
+                <h1 id="checkout-title">Checkout</h1>
+            </div>
+
+            <ol class="checkout-progress" aria-label="Checkout progress">
+                <li class="is-active" data-progress-step="1">Review</li>
+                <li data-progress-step="2">Contact</li>
+                <li data-progress-step="3">Fulfillment</li>
+                <li data-progress-step="4">Authorization</li>
+            </ol>
+
+            <div class="checkout-empty" id="checkout-empty" hidden>
+                <h2>Cart awaiting contents.</h2>
+                <p>No items are currently filed for checkout.</p>
+                <a class="button button--primary" href="shop.html">Return to shop</a>
+            </div>
+
+            <form id="checkout-form">
+                <section class="checkout-step" data-step="1" aria-labelledby="step-review">
+                    <p class="checkout-step__label">STEP 1</p>
+                    <h2 id="step-review">Review cart</h2>
+                    <div class="checkout-review" id="checkout-cart-review"></div>
+                    <div class="review-total">
+                        <span>Subtotal</span>
+                        <strong id="checkout-subtotal">$0.00</strong>
+                    </div>
+                    <div class="checkout-controls">
+                        <a class="button button--secondary" href="shop.html">Edit cart</a>
+                        <button class="button button--primary" type="button" data-next-step="2">Continue</button>
+                    </div>
+                </section>
+
+                <section class="checkout-step" data-step="2" aria-labelledby="step-contact" hidden>
+                    <p class="checkout-step__label">STEP 2</p>
+                    <h2 id="step-contact">Contact preference</h2>
+                    <p>Select where the order notice should remain visible.</p>
+                    <div class="checkout-options">
+                        <label class="choice-card">
+                            <input type="radio" name="notice" value="Browser receipt" checked>
+                            <span><strong>Browser receipt</strong><span>The receipt remains with this session and may be printed.</span></span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="notice" value="Order desk">
+                            <span><strong>Order desk</strong><span>The notice is assigned to the desk and held for ordinary review.</span></span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="notice" value="Quiet hold">
+                            <span><strong>Quiet hold</strong><span>No notice is sent forward unless the store asks for it.</span></span>
+                        </label>
+                    </div>
+                    <div class="checkout-controls">
+                        <button class="button button--secondary" type="button" data-prev-step="1">Back</button>
+                        <button class="button button--primary" type="button" data-next-step="3">Continue</button>
+                    </div>
+                </section>
+
+                <section class="checkout-step" data-step="3" aria-labelledby="step-fulfillment" hidden>
+                    <p class="checkout-step__label">STEP 3</p>
+                    <h2 id="step-fulfillment">Fulfillment method</h2>
+                    <p>Choose how DOG DAYS should classify the movement of the order.</p>
+                    <div class="checkout-options">
+                        <label class="choice-card">
+                            <input type="radio" name="fulfillment" value="Standard ground" checked>
+                            <span><strong>Standard ground</strong><span>Filed as a regular shipment when the ground is ready.</span></span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="fulfillment" value="Store pickup">
+                            <span><strong>Store pickup</strong><span>Held near the counter until the counter is identified.</span></span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="fulfillment" value="Weather hold">
+                            <span><strong>Weather hold</strong><span>Reserved in place until the weather gives the order a direction.</span></span>
+                        </label>
+                    </div>
+                    <div class="checkout-controls">
+                        <button class="button button--secondary" type="button" data-prev-step="2">Back</button>
+                        <button class="button button--primary" type="button" data-next-step="4">Continue</button>
+                    </div>
+                </section>
+
+                <section class="checkout-step" data-step="4" aria-labelledby="step-authorization" hidden>
+                    <p class="checkout-step__label">STEP 4</p>
+                    <h2 id="step-authorization">Authorization</h2>
+                    <p>No card number is required for this filing. Choose the authorization record for the order.</p>
+                    <div class="checkout-options">
+                        <label class="choice-card">
+                            <input type="radio" name="authorization" value="Deferred authorization" checked>
+                            <span><strong>Deferred authorization</strong><span>Payment is recorded as pending ordinary weather.</span></span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="authorization" value="Store balance">
+                            <span><strong>Store balance</strong><span>The balance is applied from the side of the store facing inward.</span></span>
+                        </label>
+                        <label class="choice-card">
+                            <input type="radio" name="authorization" value="Exact change pending">
+                            <span><strong>Exact change pending</strong><span>The exact amount is acknowledged and left exact.</span></span>
+                        </label>
+                    </div>
+                    <div class="checkout-review" id="checkout-order-review"></div>
+                    <div class="checkout-controls">
+                        <button class="button button--secondary" type="button" data-prev-step="3">Back</button>
+                        <button class="button button--primary" type="button" id="place-order">Try to place order</button>
+                    </div>
+                </section>
+            </form>
+
+            <section class="checkout-roulette" id="checkout-roulette" hidden role="dialog" aria-modal="true" aria-labelledby="roulette-title" aria-live="polite">
+                <div class="roulette-card">
+                    <p class="eyebrow">ORDER TABLE</p>
+                    <h2 id="roulette-title">Choose a color.</h2>
+                    <p>The order must cross the table before it enters the weather.</p>
+                    <div class="roulette-layout">
+                        <div class="roulette-wheel" id="roulette-wheel" aria-hidden="true">
+                            <div class="roulette-wheel__disc" id="roulette-disc"></div>
+                            <span class="roulette-ball" id="roulette-ball">
+                                <span class="roulette-ball__bead"></span>
+                            </span>
+                        </div>
+                        <div class="roulette-panel">
+                            <div class="roulette-buttons" id="roulette-buttons">
+                                <button class="roulette-bet roulette-bet--red" type="button" data-roulette-choice="red">Red</button>
+                                <button class="roulette-bet roulette-bet--black" type="button" data-roulette-choice="black">Black</button>
+                            </div>
+                            <p class="roulette-status" id="roulette-status">No color has been placed.</p>
+                            <div class="roulette-result" id="roulette-result" hidden>
+                                <span>Result</span>
+                                <strong id="roulette-result-value">Pending</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="checkout-failure" id="checkout-failure" hidden>
+                <article class="receipt receipt--failed">
+                    <p class="eyebrow">ORDER FAILED</p>
+                    <h2>Better luck next time.</h2>
+                    <p id="checkout-failure-detail">The order reached the table and did not return with the correct color.</p>
+                    <p>No items have been removed from the cart. The cart may try again if the cart still believes in trying.</p>
+                    <div class="receipt-actions">
+                        <a class="button button--primary" href="checkout.html">Try again</a>
+                        <a class="button button--secondary" href="shop.html">Return to shop</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="checkout-funds" id="checkout-funds" hidden>
+                <article class="receipt receipt--failed">
+                    <p class="eyebrow">INSUFFICIENT FUNDS</p>
+                    <h2>The table remains closed.</h2>
+                    <p id="checkout-funds-detail">The account is not holding enough balance for the cart.</p>
+                    <p>No items have been removed from the cart. Additional balance may be observed elsewhere.</p>
+                    <div class="receipt-actions">
+                        <a class="button button--primary" href="gallery.html">Visit gallery</a>
+                        <a class="button button--secondary" href="shop.html">Return to shop</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="checkout-processing" id="checkout-processing" hidden aria-live="polite">
+                <div>
+                    <div class="processing-mark" aria-hidden="true"></div>
+                    <h2>Processing order</h2>
+                    <p id="processing-line">Counting inventory.</p>
+                </div>
+            </section>
+
+            <section class="checkout-confirmation" id="checkout-confirmation" hidden></section>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 DOG DAYS. All rights reserved.</p>
+        <ul class="footer-links" aria-label="Site policies">
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="record.html">Record</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="cancellation.html">Cancellation</a></li>
+        </ul>
+    </footer>
+</body>
+</html>

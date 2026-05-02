@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GALLERY</title>
+    <title>Gallery | DOG DAYS</title>
+    <meta name="description" content="DOG DAYS notices presented for repeated review.">
+    <meta property="og:title" content="Gallery | DOG DAYS">
+    <meta property="og:description" content="One notice repeated until the page stops asking.">
+    <meta property="og:image" content="https://autodev110.github.io/DOG-DAYS/never.png">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="editor.css">
+    <script src="site.js" defer></script>
+    <script src="editor.js" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <div id="hero-section">
         <video autoplay loop muted playsinline id="hero-video">
             <source src="Cloud9Vid.mp4" type="video/mp4">
@@ -19,62 +26,62 @@
     </div>
 
     <header>
-        <nav>
+        <nav aria-label="Primary navigation">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="gallery.html" aria-current="page">GALLERY</a></li>
             </ul>
         </nav>
     </header>
-    
-    <main>
-        <div class="gallery">
-            <div class="gallery-item"><img src="never.png" alt="Image 1"><h3></h3></div>
-            <div class="gallery-item"><img src="never.png" alt="Image 2"><h3></h3></div>
-            <div class="gallery-item"><img src="never.png" alt="Image 3"><h3></h3></div>
-        </div>
+
+    <main id="main-content" class="site-main gallery-page">
+        <section class="slot-floor" aria-labelledby="slot-title">
+            <div class="slot-floor__header">
+                <p class="eyebrow">HOUSE BALANCE</p>
+                <h1 id="slot-title">Three machines are currently facing forward.</h1>
+                <p>The account begins each browser session with a small amount of weather. Winnings and losses remain with the same account until the session closes.</p>
+            </div>
+            <div class="slot-machines" id="slot-machines" aria-label="DOG DAYS slot machines"></div>
+        </section>
+
+        <section class="gallery-shell" aria-label="DOG DAYS gallery">
+            <div class="gallery" id="gallery-grid" aria-label="Repeated DOG DAYS notices"></div>
+            <div class="gallery-sentinel" id="gallery-sentinel" aria-hidden="true">
+                <span>MORE NOTICES PENDING</span>
+            </div>
+            <noscript>
+                <div class="gallery gallery--fallback">
+                    <figure class="gallery-item">
+                        <img src="never.png" width="959" height="1494" alt="DOG DAYS poster reading You Will Never Understand">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="never.png" width="959" height="1494" alt="DOG DAYS poster reading You Will Never Understand">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="never.png" width="959" height="1494" alt="DOG DAYS poster reading You Will Never Understand">
+                    </figure>
+                </div>
+            </noscript>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 DOG DAYS. All rights reserved.</p>
+        <ul class="footer-links" aria-label="Site policies">
+            <li><a href="notices.html">Notices</a></li>
+            <li><a href="record.html">Record</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="cancellation.html">Cancellation</a></li>
+        </ul>
     </footer>
 
-    <div class="popup" id="popup">
-        <div class="popup-content" id="popup-content">
-            <span class="close-btn" id="close-btn">&times;</span>
-            <img src="" alt="Zoomed" id="zoomed-image">
+    <div class="image-viewer" id="image-viewer" role="dialog" aria-modal="true" aria-label="Expanded gallery image" hidden>
+        <div class="image-viewer__panel">
+            <button class="image-viewer__close" type="button" id="image-viewer-close">Close</button>
+            <img src="never.png" width="959" height="1494" alt="DOG DAYS poster reading You Will Never Understand">
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const images = document.querySelectorAll('.gallery-item img');
-            const popup = document.getElementById('popup');
-            const zoomedImage = document.getElementById('zoomed-image');
-            const closeBtn = document.getElementById('close-btn');
-            const popupContent = document.getElementById('popup-content');
-
-            images.forEach(img => {
-                img.addEventListener('click', (e) => {
-                    zoomedImage.src = e.target.src;
-                    popup.style.display = 'flex';
-                });
-            });
-
-            closeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                popup.style.display = 'none';
-            });
-
-            popup.addEventListener('click', (e) => {
-                if (e.target === popup) {
-                    popup.style.display = 'none';
-                }
-            });
-
-            popupContent.addEventListener('click', (e) => e.stopPropagation());
-        });
-    </script>
 </body>
 </html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <rect width="96" height="96" fill="#fff"/>
+  <rect x="20" y="13" width="56" height="70" fill="#f8f8f4" stroke="#000" stroke-width="6"/>
+  <text x="48" y="42" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="16" fill="#000">YOU</text>
+  <text x="48" y="61" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="13" fill="#ed1c24">NOTICE</text>
+</svg>
